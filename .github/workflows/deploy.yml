@@ -45,7 +45,6 @@ jobs:
 
       - name: Se connecter à l'EC2 et déployer
         run: |
-          ssh -i ${{ secrets.EC2_HOST }} ec2-user@ec2-3-82-114-139.compute-1.amazonaws.com << 'EOF'
-            yes
+          ssh -o StrictHostKeyChecking=no ec2-user@${{ secrets.EC2_HOST }} << 'EOF'
             ./deploy.sh
           EOF
